@@ -109,6 +109,19 @@ Flask
 Database
 
 SQLite
+
+Project Structure
+our-school/
+├── frontend/
+│   ├── index.html       — All 11 screens
+│   ├── style.css        — Complete design system
+│   └── app.js           — All logic + 50 quiz questions
+├── backend/
+│   ├── app.py           — Flask REST API (14 endpoints)
+│   ├── requirements.txt — Python dependencies
+│   └── ourschool.db     — Auto-generated SQLite database
+└── README.md
+
 Installation and Setup
 Clone the Repository
 git clone https://github.com/your-repo/our-school.git
