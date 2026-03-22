@@ -3,6 +3,11 @@ Our School
 
 Our School is a full-stack educational technology application designed to bridge the learning gap for students in rural India. The platform integrates study material, video lectures, NCERT references, previous year questions (PYQs), and chapter-wise quizzes into a single unified system, eliminating the need for multiple applications.
 
+Live Demo
+
+Access the deployed application here:
+https://incomparable-florentine-7073d7.netlify.app/
+
 Overview
 
 The application provides a structured and accessible learning environment for:
