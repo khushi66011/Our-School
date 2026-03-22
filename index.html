@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our School</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- SPLASH SCREEN -->
+<div id="screen-splash" class="screen active">
+  <div class="splash-bg"></div>
+  <div class="splash-content">
+    <div class="splash-logo">
+      <div class="logo-icon">
+        <span class="material-icons-round">school</span>
+      </div>
+      <h1 class="logo-text">Our School</h1>
+      <p class="logo-tagline">Learn. Grow. Succeed.</p>
+    </div>
+    <div class="splash-loader">
+      <div class="loader-track"><div class="loader-fill"></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- LOGIN SCREEN -->
+<div id="screen-login" class="screen">
+  <div class="login-top-art"></div>
+  <div class="login-container">
+    <div class="login-logo-small">
+      <span class="material-icons-round">school</span>
+      <span>Our School</span>
+    </div>
+    <h2 class="login-title">Welcome!</h2>
+    <p class="login-sub">Enter your phone number to get started</p>
+
+    <div class="form-group">
+      <label class="form-label">Phone Number</label>
+      <div class="phone-input-wrap">
+        <span class="country-code">+91</span>
+        <input type="tel" id="phone-input" class="form-input" placeholder="98XXXXXXXX" maxlength="10">
+      </div>
+    </div>
+
+    <button class="btn-primary" id="btn-get-otp">
+      <span class="material-icons-round">sms</span>
+      Get OTP
+    </button>
+
+    <div id="otp-section" class="otp-section hidden">
+      <div class="form-group">
+        <label class="form-label">Enter OTP</label>
+        <div class="otp-inputs">
+          <input type="text" class="otp-box" maxlength="1">
+          <input type="text" class="otp-box" maxlength="1">
+          <input type="text" class="otp-box" maxlength="1">
+          <input type="text" class="otp-box" maxlength="1">
+        </div>
+        <p class="otp-hint">Use OTP: <strong>1234</strong> (demo)</p>
+      </div>
+      <button class="btn-primary" id="btn-verify-otp">
+        <span class="material-icons-round">verified</span>
+        Verify & Login
+      </button>
+    </div>
+
+    <div id="name-section" class="name-section hidden">
+      <div class="form-group">
+        <label class="form-label">Your Name</label>
+        <input type="text" id="name-input" class="form-input" placeholder="e.g. Priya Sharma">
+      </div>
+      <button class="btn-primary" id="btn-save-name">
+        <span class="material-icons-round">arrow_forward</span>
+        Continue
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- LANGUAGE SELECTION SCREEN -->
+<div id="screen-language" class="screen">
+  <div class="lang-header">
+    <h2>Choose Language</h2>
+    <p>Select your preferred language</p>
+  </div>
+  <div class="lang-list" id="lang-list">
+    <!-- filled by JS -->
+  </div>
+  <div class="lang-footer">
+    <button class="btn-primary full-width" id="btn-save-lang">
+      <span class="material-icons-round">save</span>
+      Save Settings
+    </button>
+  </div>
+</div>
+
+<!-- HOME DASHBOARD -->
+<div id="screen-home" class="screen">
+  <div class="home-header">
+    <div class="header-left">
+      <p class="greeting" id="greeting-text">Namaste!</p>
+      <h2 class="user-name" id="home-username">Friend</h2>
+    </div>
+    <div class="header-right">
+      <button class="icon-btn notif-btn">
+        <span class="material-icons-round">notifications</span>
+        <span class="notif-dot"></span>
+      </button>
+      <div class="avatar" id="home-avatar">P</div>
+    </div>
+  </div>
+
+  <div class="home-scroll">
+    <!-- Word of the Day -->
+    <div class="wotd-card" id="wotd-card">
+      <div class="wotd-badge">
+        <span class="material-icons-round">lightbulb</span>
+        Word of the Day
+      </div>
+      <div class="wotd-word" id="wotd-word">Perseverance</div>
+      <div class="wotd-meaning" id="wotd-meaning">Continued effort despite difficulty or delay</div>
+      <button class="wotd-next" id="wotd-next">
+        <span class="material-icons-round">refresh</span> New Word
+      </button>
+    </div>
+
+    <!-- Progress Overview -->
+    <div class="section-title">
+      <span class="material-icons-round">bar_chart</span> Your Progress
+    </div>
+    <div class="progress-row">
+      <div class="progress-circle-card">
+        <div class="progress-circle" id="progress-circle">
+          <svg viewBox="0 0 100 100">
+            <circle class="track" cx="50" cy="50" r="42"/>
+            <circle class="fill" id="prog-arc" cx="50" cy="50" r="42" stroke-dasharray="0 264"/>
+          </svg>
+          <div class="prog-label">
+            <span class="prog-pct" id="prog-pct">0%</span>
+            <span class="prog-sub">Overall</span>
+          </div>
+        </div>
+      </div>
+      <div class="stats-col">
+        <div class="stat-card">
+          <span class="material-icons-round stat-icon daily">today</span>
+          <div>
+            <div class="stat-val" id="daily-mins">0 min</div>
+            <div class="stat-lbl">Today</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <span class="material-icons-round stat-icon weekly">date_range</span>
+          <div>
+            <div class="stat-val" id="weekly-mins">0 min</div>
+            <div class="stat-lbl">This Week</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <span class="material-icons-round stat-icon streak">local_fire_department</span>
+          <div>
+            <div class="stat-val" id="streak-val">0 days</div>
+            <div class="stat-lbl">Streak</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Module Cards -->
+    <div class="section-title">
+      <span class="material-icons-round">menu_book</span> Choose Your Class
+    </div>
+    <div class="module-grid" id="module-grid">
+      <!-- filled by JS -->
+    </div>
+  </div>
+
+  <!-- Bottom Nav -->
+  <div class="bottom-nav">
+    <button class="nav-btn active" data-tab="home" onclick="switchTab('home')">
+      <span class="material-icons-round">home</span>
+      <span>Home</span>
+    </button>
+    <button class="nav-btn" data-tab="subjects" onclick="switchTab('subjects')">
+      <span class="material-icons-round">auto_stories</span>
+      <span>Subjects</span>
+    </button>
+    <button class="nav-btn" data-tab="progress" onclick="switchTab('progress')">
+      <span class="material-icons-round">insights</span>
+      <span>Progress</span>
+    </button>
+    <button class="nav-btn" data-tab="quizzes" onclick="switchTab('quizzes')">
+      <span class="material-icons-round">quiz</span>
+      <span>Quizzes</span>
+    </button>
+    <button class="nav-btn" data-tab="profile" onclick="switchTab('profile')">
+      <span class="material-icons-round">person</span>
+      <span>Profile</span>
+    </button>
+  </div>
+</div>
+
+<!-- MODULE SCREEN -->
+<div id="screen-module" class="screen">
+  <div class="sub-header">
+    <button class="back-btn" onclick="goBack()">
+      <span class="material-icons-round">arrow_back</span>
+    </button>
+    <h2 id="module-title">Class 10</h2>
+    <div></div>
+  </div>
+  <div class="module-scroll">
+    <div class="module-prog-banner" id="module-prog-banner">
+      <div class="mpb-label">Module Progress</div>
+      <div class="mpb-bar-wrap"><div class="mpb-bar" id="mpb-bar"></div></div>
+      <div class="mpb-pct" id="mpb-pct">0%</div>
+    </div>
+    <div class="subject-grid" id="subject-grid"><!-- filled by JS --></div>
+  </div>
+</div>
+
+<!-- SUBJECT/CHAPTER SCREEN -->
+<div id="screen-subject" class="screen">
+  <div class="sub-header">
+    <button class="back-btn" onclick="goBack()">
+      <span class="material-icons-round">arrow_back</span>
+    </button>
+    <h2 id="subject-title">Maths</h2>
+    <div></div>
+  </div>
+  <div class="chapter-scroll" id="chapter-list"><!-- filled by JS --></div>
+</div>
+
+<!-- CHAPTER DETAIL SCREEN -->
+<div id="screen-chapter" class="screen">
+  <div class="sub-header">
+    <button class="back-btn" onclick="goBack()">
+      <span class="material-icons-round">arrow_back</span>
+    </button>
+    <h2 id="chapter-title">Chapter 1</h2>
+    <div></div>
+  </div>
+  <div class="chapter-detail-scroll">
+    <!-- Video -->
+    <div class="detail-card">
+      <div class="detail-card-header">
+        <span class="material-icons-round">play_circle</span>
+        Video Lesson
+      </div>
+      <div class="video-thumb" id="chapter-video">
+        <span class="material-icons-round play-icon">play_circle_filled</span>
+        <p id="video-label">Watch on YouTube</p>
+      </div>
+    </div>
+    <!-- Notes -->
+    <div class="detail-card">
+      <div class="detail-card-header">
+        <span class="material-icons-round">description</span>
+        Notes
+      </div>
+      <p id="chapter-notes" class="notes-text">Loading notes...</p>
+    </div>
+    <!-- Resources -->
+    <div class="detail-card resources-row">
+      <a class="resource-btn" id="book-btn" href="#" target="_blank">
+        <span class="material-icons-round">menu_book</span>
+        NCERT Book
+      </a>
+      <a class="resource-btn" id="pyq-btn" href="#" target="_blank">
+        <span class="material-icons-round">history_edu</span>
+        PYQs
+      </a>
+    </div>
+    <!-- Quiz -->
+    <button class="btn-primary quiz-start-btn" id="start-quiz-btn">
+      <span class="material-icons-round">quiz</span>
+      Start Quiz
+    </button>
+  </div>
+</div>
+
+<!-- QUIZ SCREEN -->
+<div id="screen-quiz" class="screen">
+  <div class="sub-header">
+    <button class="back-btn" onclick="goBack()">
+      <span class="material-icons-round">arrow_back</span>
+    </button>
+    <h2>Quiz</h2>
+    <div class="quiz-counter" id="quiz-counter">1/10</div>
+  </div>
+  <div class="quiz-body">
+    <div class="quiz-difficulty-row" id="quiz-diff-row">
+      <span class="diff-chip easy active" onclick="setDifficulty('easy')">Easy</span>
+      <span class="diff-chip medium" onclick="setDifficulty('medium')">Medium</span>
+      <span class="diff-chip hard" onclick="setDifficulty('hard')">Hard</span>
+    </div>
+    <div class="quiz-progress-bar">
+      <div class="quiz-prog-fill" id="quiz-prog-fill"></div>
+    </div>
+    <div class="question-card">
+      <p class="question-text" id="question-text">Question goes here</p>
+      <div class="options-list" id="options-list"><!-- filled by JS --></div>
+    </div>
+    <button class="btn-primary" id="btn-next-q" style="display:none">
+      Next <span class="material-icons-round">arrow_forward</span>
+    </button>
+  </div>
+</div>
+
+<!-- QUIZ RESULT SCREEN -->
+<div id="screen-result" class="screen">
+  <div class="result-container">
+    <div class="result-trophy">
+      <span class="material-icons-round" id="result-icon">emoji_events</span>
+    </div>
+    <h2 class="result-title" id="result-title">Quiz Complete!</h2>
+    <div class="result-score" id="result-score">7/10</div>
+    <p class="result-msg" id="result-msg">Great job!</p>
+    <div class="result-details" id="result-details"><!-- filled by JS --></div>
+    <div class="result-actions">
+      <button class="btn-outline" onclick="retryQuiz()">
+        <span class="material-icons-round">replay</span> Retry
+      </button>
+      <button class="btn-primary" onclick="goHome()">
+        <span class="material-icons-round">home</span> Home
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- PROGRESS TAB -->
+<div id="screen-progress" class="screen">
+  <div class="sub-header">
+    <button class="back-btn" onclick="goHome()">
+      <span class="material-icons-round">arrow_back</span>
+    </button>
+    <h2>My Progress</h2>
+    <div></div>
+  </div>
+  <div class="progress-scroll">
+    <div class="prog-module-list" id="prog-module-list"><!-- filled by JS --></div>
+    <div class="section-title"><span class="material-icons-round">military_tech</span> Badges</div>
+    <div class="badges-grid" id="badges-grid"><!-- filled by JS --></div>
+  </div>
+</div>
+
+<!-- PROFILE TAB -->
+<div id="screen-profile" class="screen">
+  <div class="profile-header">
+    <div class="profile-avatar-large" id="profile-avatar">P</div>
+    <h2 id="profile-name">Friend</h2>
+    <p id="profile-phone">+91 98XXXXXXXX</p>
+    <button class="lang-change-btn" onclick="showScreen('screen-language')">
+      <span class="material-icons-round">translate</span> Change Language
+    </button>
+  </div>
+  <div class="profile-stats">
+    <div class="pstat"><div class="pstat-val" id="ps-chapters">0</div><div class="pstat-lbl">Chapters</div></div>
+    <div class="pstat"><div class="pstat-val" id="ps-quizzes">0</div><div class="pstat-lbl">Quizzes</div></div>
+    <div class="pstat"><div class="pstat-val" id="ps-badges">0</div><div class="pstat-lbl">Badges</div></div>
+  </div>
+  <div class="profile-options">
+    <button class="profile-opt-btn" onclick="showScreen('screen-language')">
+      <span class="material-icons-round">translate</span>
+      Language Settings
+      <span class="material-icons-round arrow">chevron_right</span>
+    </button>
+    <button class="profile-opt-btn" onclick="setGoalPrompt()">
+      <span class="material-icons-round">track_changes</span>
+      Daily Goal
+      <span class="material-icons-round arrow">chevron_right</span>
+    </button>
+    <button class="profile-opt-btn" id="logout-btn" onclick="logout()">
+      <span class="material-icons-round">logout</span>
+      Logout
+      <span class="material-icons-round arrow">chevron_right</span>
+    </button>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
